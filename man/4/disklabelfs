@@ -1,0 +1,32 @@
+.TH DISKLABELFS 4
+.SH NAME
+disklabelfs - access to partitions on a disk with a disklabel
+.SH SYNOPSIS
+mount {
+.B disklabelfs
+[
+.B -d
+]
+.I disk
+}
+.I mtpt
+.SH DESCRIPTION
+.B Disklabelfs
+makes the partitions on a disk with a disklabel accessible over styx.
+.SS Options
+.TP
+.B -d
+Print debug information.  A second
+.B -d enables debug information from the ffs library.
+.SH EXAMPLE
+.EX
+mount {disklabelfs '#U*/dev/wd1c'} /n/labels
+.EE
+.SH SOURCE
+.B /appl/cmd/disklabelfs.b
+.br
+.B /appl/lib/ffs.m
+.br
+.B /appl/lib/ffs.b
+.SH SEE ALSO
+.IR ffsfs (4).

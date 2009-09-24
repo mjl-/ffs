@@ -1,0 +1,15 @@
+<../../mkconfig
+
+TARG=\
+	ffs.dis\
+
+MODULES=\
+	ffs.m\
+
+SYSMODULES=\
+	sys.m\
+	util0.m\
+
+DISBIN=$ROOT/dis/lib
+
+<$ROOT/mkfiles/mkdis

@@ -1,0 +1,80 @@
+.TH FFSFS 4
+.SH NAME
+ffsfs - ffs file system
+.SH SYNOPSIS
+.B ffsfs
+[
+.B -dD
+] [
+.B -abc
+] [
+.B -P
+] [
+.B -u
+.I userfile
+] [
+.B -g
+.I groupfile
+] [
+.B -l
+.I label
+]
+.I disk
+.I mtpt
+.SH DESCRIPTION
+.B Ffsfs
+makes the contents of a BSD fast file system (FFS) available
+over styx.  Only reading of the file system is supported, writes
+return ``permission denied'' errors.
+.SS Options
+.TP
+.B -d
+Print debug information.  A second
+.B -d enables debug information from the ffs library.
+.TP
+.B -D
+Print styx traces.
+.TP
+.B -abc
+Standard mount flags.
+.TP
+.B -P
+Disable permission checking.
+.TP
+.BI -u " userfile"
+Read users from a unix ``passwd'' file.
+.TP
+.BI -g " groupfile"
+Read groups from a unix groups file.
+.TP
+.BI -l " label"
+Read a disklabel from
+.I disk
+and mount the ffs partition specified by
+.IR label .
+Without this option,
+.I disk
+is treated as the ffs partition.
+.SH EXAMPLE
+.EX
+ffsfs -u /n/ffs/etc/passwd -g /n/ffs/etc/group -l a '#U*/dev/wd1c' /n/ffs
+.EE
+.SH SOURCE
+.B /appl/cmd/ffsfs.b
+.br
+.B /appl/lib/ffs.m
+.br
+.B /appl/lib/ffs.b
+.SH SEE ALSO
+.IR disklabelfs (4).
+.SH BUGS
+Only reading is supported.
+.br
+Due to lack of caching, performance is not top notch.
+.br
+Newer ffs/ufs versions/extensions are not supported.
+.br
+Hashed directories are not supported, making walks slower than necessary.
+.br
+Only works with ffs partitions for little endian machines, and
+probably only ffs partitions for systems with 32 bit pointers.

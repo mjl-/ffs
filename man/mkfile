@@ -1,0 +1,7 @@
+<../mkconfig
+
+MAN=\
+	4/ffsfs\
+	4/disklabelfs\
+
+<mkman
